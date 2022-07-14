@@ -12,8 +12,8 @@ They have also established a wide network of Early Warning Radar systems which r
 Primary Objective: Locate and Destroy the Scud Missile convoy before it arrives at Shiraz Intl. ~5 hour window from mission starts before you loose it. 
 Secondary Objective: Locate and Destroy the Iranian Nuclear Command Center located in or around BT. 
 
-
 **=========== SUPPORT ELEMENTS & FREQS =============**
+
 Tankers
 Texaco     1-1    KC-135     251Mhz    124X
 Texaco     2-1     KC-135MPRS     254Mhz    123X
