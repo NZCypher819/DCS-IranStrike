@@ -1,4 +1,4 @@
-# DCS-IranStrike
+**# DCS-IranStrike**
 DCS Mission Files for Op Iran Strike
 
 This mission is based on the Persian Gulf Map.
@@ -13,20 +13,20 @@ Primary Objective: Locate and Destroy the Scud Missile convoy before it arrives 
 Secondary Objective: Locate and Destroy the Iranian Nuclear Command Center located in or around BT. 
 
 
-=========== SUPPORT ELEMENTS & FREQS =============
+**=========== SUPPORT ELEMENTS & FREQS =============**
 Tankers
 Texaco     1-1    KC-135     251Mhz    124X
 Texaco     2-1     KC-135MPRS     254Mhz    123X
 Arco         1-1    KC-135    252Mhz    125X
 Arco         2-1    KC-135MPRS    253Mhz    126X
 
-AWACS
+**AWACS**
 Overload     6-1   E3A         266Mhz
 
-TACAN
+**TACAN**
 Kish Intl Tower            250.650Mhz    112X
 
-Flights
+**Flights**
 M2000        Uzi 1        126Mhz
 AV-8B        Chevy 1    125Mhz
 F/A-18C    Jury 9    124Mhz
