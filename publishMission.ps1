@@ -6,7 +6,7 @@ if (-not (Test-Path -Path $7zipPath -PathType Leaf)) {
 }
 Set-Alias 7zip $7zipPath
 
-$tgt = "Iran-Strike-v0.7.miz"
+$tgt = "Iran-Strike-v0.8.miz"
 $src = "l10n"
 
 #updates the .miz file with the lua files
