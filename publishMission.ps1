@@ -6,11 +6,11 @@ if (-not (Test-Path -Path $7zipPath -PathType Leaf)) {
 }
 Set-Alias 7zip $7zipPath
 
-$tgt = "Iran-Strike-v0.8.miz"
+$tgt = "Iran-Strike-v0.9.miz"
 $src = "l10n"
 
 #updates the .miz file with the lua files
 7zip u $tgt $src
 
 #copy the mission file to Missions folder
-Copy-Item Iran-Strike-v0.7.miz $missionPath
+Copy-Item Iran-Strike-v0.9.miz $missionPath
