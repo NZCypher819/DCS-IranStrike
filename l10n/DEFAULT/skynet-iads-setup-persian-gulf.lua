@@ -178,3 +178,120 @@ A2ADispatcher:Start()
 --mist.scheduleFunction(outputNames, self, 1, 2)
 --end test
 end
+
+
+--============================== ZONE COMMANDER =================================
+function merge(tbls)
+	local res = {}
+	for i,v in ipairs(tbls) do
+		for i2,v2 in ipairs(v) do
+			table.insert(res,v2)
+		end
+	end
+	
+	return res
+end
+
+function allExcept(tbls, except)
+	local tomerge = {}
+	for i,v in pairs(tbls) do
+		if i~=except then
+			table.insert(tomerge, v)
+		end
+	end
+	return merge(tomerge)
+end
+
+-- upgrades might be old code....
+upgrades = {
+	ships = {
+		blue = {'blueShip','blueShip','blueShip'},
+		red = {'redShipS','redShipS','redShipM','redShipM','redShipL','redShipL'}
+	},
+	
+}
+
+carrier = {
+	blue = { "bShip","bShip"},
+	red = {}
+}
+
+airfield = {
+	blue = { "bInfantry", "bArmor", "bSam", "bSam2", "bSam3"},
+	red = {"rInfantry", "rArmor", "rSam", "rSam2", "rSam3" }
+}
+
+farp = {
+	blue = {"bInfantry", "bArmor", "bSam"},
+	red = {"rInfantry", "rArmor", "rSam" }
+}
+
+regularzone = {
+	blue = {"bInfantry", "bArmor", "bSamIR"},
+	red = {"rInfantry", "rArmor", "rSamIR" }
+}
+
+specialSAM = {
+	blue = {"bInfantry", "bSamIR","bInfantry", "bInfantry", "bSamBig" },
+	red = {"rInfantry", "rSamIR", "rInfantry", "rInfantry", "rSamBig" }
+}
+
+specialKrasnodar = {
+	blue = {"bInfantry", "bSamIR","bSam2", "bSam3", "bSamBig", "bSamFinal" },
+	red = {"rInfantry", "rSamIR", "rSam2", "rSam3", "rSamBig", "rSamFinal" }
+}
+
+convoy = {
+	blue = {"bInfantry"},
+	red = {"rInfantry", "rInfantry", "rArmor"}
+}
+
+cargoSpawns = {
+	["Anapa"] = {"c1","c2","c3"},
+	["Bravo"] = {"c6","c7"},
+	["Krymsk"] = {"c8","c9","c10"},
+	["Factory"] = {"c4","c5","c11"},
+	["Echo"] = {"c12","c13"}
+}
+
+farpSupply = {
+	["Bravo"] = {"bravoFuelAndAmmo"},
+	["Echo"] = {"echoFuelAndAmmo"}
+}
+
+cargoAccepts = {
+	anapa = allExcept(cargoSpawns, 'Anapa'),
+	bravo =  allExcept(cargoSpawns, 'Bravo'),
+	krymsk =  allExcept(cargoSpawns, 'Krymsk'),
+	factory =  allExcept(cargoSpawns, 'Factory'),
+	echo =  allExcept(cargoSpawns, 'Echo'),
+	general = allExcept(cargoSpawns)
+}
+
+-- redInfantry, redArmor, redSHORAD, redMERAD, redLORAD, redPD, redSA5, redEWR
+-- insInfantry, insArmor, insSHORAD
+-- blueInfantry, blueArmor, blueSHORAD, blueMERAD, blueLORAD, bluePD
+-- blueShip
+-- redShipS, redShipM, redShipL
+
+flavor = {
+	kishintl = 'WPT 1\nStart zone',
+	hatay = 'WPT 3\n'
+}
+local filepath = 'U64-IranStrike.0.1.lua'
+if lfs then 
+	local dir = lfs.writedir()..'Missions/Saves/'
+	lfs.mkdir(dir)
+	filepath = dir..filepath
+	env.info('U64 Iran Strike - Save file path: '..filepath)
+end
+bc = BattleCommander:new(filepath, 10, 60)
+zones = {
+	kishintl = ZoneCommander:new({zone='kishintl', side=2, level=1, upgrades=upgrades.minimal, crates={}, flavorText=flavor.kishintl}),
+}
+
+zones.incirlik:addGroups({
+	GroupCommander:new({name='incirlik-supply-1', mission='supply', targetzone='Hatay'}),
+	GroupCommander:new({name='incirlik-supply-2', mission='supply', targetzone='FOB Alpha'}),
+	GroupCommander:new({name='incirlik-aleppo-tanker', mission='patrol', targetzone='Aleppo'})
+})

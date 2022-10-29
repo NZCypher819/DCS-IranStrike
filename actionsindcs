@@ -1,0 +1,24 @@
+DO SCRIPT
+Type = Mission Start
+
+--configure zone messages 
+GlobalSettings.messages = {
+        grouplost = false,
+        captured = true,
+        upgraded = true,
+        repaired = true,
+        zonelost = true,
+        disabled = true
+}
+
+
+
+
+DO SCRIPT
+Type Mission Start
+
+GlobalSettings
+
+GlobalSettings.setDifficultyScaling(1.4,1) -- red respawn factor
+
+GlobalSettings.setDifficultyScaling(1.0,2) -- blue respawn factor
